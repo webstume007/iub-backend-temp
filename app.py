@@ -131,7 +131,7 @@ box-shadow: 0 15px 25px -10px rgba(0, 201, 255, 0.9);
 <div class="category-tags">
 <span>Results</span>
 <span>Marks</span>
-<span>Other</span>
+<span>Other's Result</span>
 </div>
 <div class="info-box">
 <p>⚡ <b>Much Faster Performance</b></p>
