@@ -8,164 +8,167 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. Custom CSS for Animations and Modern UI
-custom_css = """
+# 2. Flush-Left HTML and CSS to prevent Streamlit from wrapping it in a code block
+html_string = """
 <style>
-    /* Hide default Streamlit elements for a clean landing page */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    .stApp {
-        /* Animated Gradient Background */
-        background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #020617);
-        background-size: 400% 400%;
-        animation: gradientBG 15s ease infinite;
-        color: white;
-        font-family: 'Inter', sans-serif;
-    }
+/* Hide Streamlit elements for a clean canvas */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
 
-    /* Background Animation Keyframes */
-    @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+/* Modern Dark Theme Background */
+.stApp {
+    background: linear-gradient(135deg, #050505, #111827, #0f172a, #050505);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Inter', system-ui, sans-serif;
+}
 
-    /* Centered Glassmorphism Card with Floating Animation */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 50px 30px;
-        text-align: center;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        animation: float 6s ease-in-out infinite;
-        margin-top: 5vh;
-    }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-12px); }
-        100% { transform: translateY(0px); }
-    }
+/* Centered Glass Card */
+.modern-card {
+    background: rgba(17, 25, 40, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: floatCard 6s ease-in-out infinite;
+    max-width: 650px;
+    margin: 5vh auto;
+}
 
-    /* Typography */
-    .title-text {
-        font-size: 2.8rem !important;
-        font-weight: 800;
-        background: -webkit-linear-gradient(45deg, #38bdf8, #818cf8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 5px;
-    }
+@keyframes floatCard {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
 
-    .subtitle-text {
-        font-size: 1.5rem;
-        font-weight: 400;
-        color: #e2e8f0;
-        margin-bottom: 25px;
-    }
+/* Typography & Colors */
+.gradient-title {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #00f2fe, #4facfe, #00f2fe);
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
 
-    .tags {
-        font-size: 0.85rem;
-        color: #94a3b8;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-    }
+@keyframes shine {
+    to { background-position: 200% center; }
+}
 
-    .highlight-box {
-        background: rgba(56, 189, 248, 0.1);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        border-radius: 12px;
-        padding: 15px;
-        margin: 20px 0;
-    }
+.sub-title {
+    color: #9ca3af;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
 
-    .features {
-        font-size: 1.1rem;
-        color: #cbd5e1;
-        margin-bottom: 10px;
-    }
+.category-tags {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
 
-    .create-account {
-        color: #fbbf24;
-        font-weight: 700;
-        font-size: 1.2rem;
-        margin-top: 15px;
-    }
+.category-tags span {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
-    .warning-text {
-        color: #f87171;
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-top: 10px;
-        margin-bottom: 35px;
-    }
+/* Highlighted Message Box */
+.info-box {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
 
-    /* Animated Glowing Button */
-    .glow-button {
-        display: inline-block;
-        text-decoration: none;
-        color: #ffffff !important;
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-        background-size: 300%;
-        padding: 16px 45px;
-        font-size: 1.3rem;
-        font-weight: bold;
-        border-radius: 50px;
-        transition: all 0.4s ease-in-out;
-        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-        animation: pulse-border 2s infinite;
-    }
+.info-box p {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
 
-    .glow-button:hover {
-        background-position: 100%;
-        transform: scale(1.05) translateY(-3px);
-        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.7);
-    }
+.warning-msg {
+    color: #f87171;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
 
-    @keyframes pulse-border {
-        0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
-        70% { box-shadow: 0 0 0 15px rgba(139, 92, 246, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
-    }
+/* Call to Action Button */
+.action-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    color: #000000 !important;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 16px 48px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px -10px rgba(0, 201, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 25px -10px rgba(0, 201, 255, 0.9);
+}
 </style>
-"""
 
-# Inject the CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+<div class="modern-card">
+    <div class="gradient-title">IUBBACKEND</div>
+    <div class="sub-title">Result Portal Transformed 🚀</div>
 
-# 3. HTML Layout Structure
-html_content = """
-<div class="glass-card">
-    <div class="title-text">IUBBACKEND Result Portal</div>
-    <div class="subtitle-text">We have updated our portal! 🚀</div>
-    
-    <div class="tags">
-        <span>Results</span> | <span>Marks</span> | <span>Other Results</span>
+    <div class="category-tags">
+        <span>Results</span>
+        <span>Marks</span>
+        <span>Other</span>
     </div>
-    
-    <div class="highlight-box">
-        <div class="features">⚡ Much Faster Performance &nbsp;•&nbsp; 🎨 Better UI Experience</div>
-        <div class="create-account">✨ Create your account Now ✨</div>
+
+    <div class="info-box">
+        <p>⚡ <b>Much Faster Performance</b></p>
+        <p>🎨 <b>Better UI Experience</b></p>
+        <p style="color: #4ade80; font-weight: bold; margin-top: 15px;">✨ Create your account Now</p>
     </div>
-    
-    <div class="warning-text">
+
+    <div class="warning-msg">
         ⚠️ Previous accounts will not work. You must create a new one.
     </div>
-    
-    <a href="https://iubbackend.vercel.app" target="_top" class="glow-button">See Results</a>
+
+    <a href="https://iubbackend.vercel.app" target="_top" class="action-btn">
+        See Results
+    </a>
 </div>
 """
 
-# Inject the UI
-st.markdown(html_content, unsafe_allow_html=True)
-
-# Optional: Add a subtle particle effect or balloons on load
-st.snow() # Creates a nice falling animation effect over the dark background
+# 3. Inject the UI
+st.markdown(html_string, unsafe_allow_html=True)
