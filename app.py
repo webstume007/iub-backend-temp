@@ -140,12 +140,12 @@ text-decoration: underline;
 <div class="container">
 <div class="card">
 <div class="title">IUBBACKEND</div>
-<div class="subtitle">The Result Portal, completely reimagined.</div>
+<div class="subtitle">The Result Portal, completely new design.</div>
 
 <div class="features">
 <p><span class="highlight">⚡ Faster Performance</span></p>
 <p><span class="highlight">🎨 Modernized UI Experience</span></p>
-<p style="margin-top: 15px; font-weight: bold; color: #a7f3d0;">✨ Create your new account today</p>
+<p style="margin-top: 15px; font-weight: bold; color: #a7f3d0;">✨ Create your new account!</p>
 </div>
 
 <div class="warning">
@@ -153,7 +153,7 @@ text-decoration: underline;
 </div>
 
 <a href="https://iubbackend.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
-Access New Portal
+See Results with New Portal
 </a>
 
 <a href="https://iub-old.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn-secondary">
