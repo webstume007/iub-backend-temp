@@ -150,6 +150,7 @@ text-decoration: underline;
 
 <div class="warning">
 ⚠️ Note: Previous accounts will not work. A new account is required.
+Contact in case of issues: WA: 03119277832
 </div>
 
 <a href="https://iubbackend.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
